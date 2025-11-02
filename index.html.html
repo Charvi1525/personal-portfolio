@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Charvi Savani — Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --coral: #ff6b6b;
+      --coral-deep: #ff4b4b;
+      --white: #ffffff;
+      --offwhite: #fbfbfb;
+      --muted: #8b8b8b;
+      --card-bg: #ffffff;
+      --text-dark: #111;
+      --max-width: 1100px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--offwhite);
+      color: var(--text-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    header{
+      position:fixed;
+      top:0; left:0; right:0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      z-index:999;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .nav-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 20px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .brand .logo{
+      width:44px;height:44px;border-radius:50%;
+      background: linear-gradient(135deg,var(--coral),var(--coral-deep));
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      box-shadow: 0 8px 20px rgba(255,107,107,0.15);
+    }
+    .brand h1{font-size:18px;font-weight:700;letter-spacing:0.2px}
+    nav ul{display:flex;gap:20px;list-style:none}
+    nav a{color:var(--text-dark);text-decoration:none;font-weight:500;padding:6px 8px;border-radius:6px}
+    nav a:hover{color:var(--coral-deep);background:rgba(255,107,107,0.06)}
+
+    /* ---------- HERO ---------- */
+    .hero{
+      max-width:var(--max-width);
+      margin:110px auto 40px auto; /* give space for fixed header */
+      display:grid;
+      grid-template-columns: 1fr 460px;
+      gap:36px;
+      align-items:center;
+      padding:36px;
+      position:relative;
+    }
+
+    /* left hero content */
+    .hero-left{
+      padding-right:10px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background: linear-gradient(90deg,#fff, rgba(255,107,107,0.03));
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:40px;
+      font-weight:600;
+      letter-spacing:0.5px;
+      margin-bottom:18px;
+    }
+    .hero-left h2{
+      font-family:'Playfair Display', serif;
+      font-size:44px;
+      margin-bottom:8px;
+      color:var(--text-dark);
+    }
+    .hero-left h2 span{color:var(--coral)}
+    .tagline{font-size:20px;color:var(--muted);margin-bottom:16px}
+    .hero-left p{color:var(--muted);max-width:680px}
+
+    .cta{
+      margin-top:22px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:10px 18px;
+      border-radius:8px;
+      font-weight:700;
+      transition:all .22s ease;
+    }
+    .btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 24px rgba(255,107,107,0.12)}
+    .btn-outline{border:2px solid var(--coral);background:#fff;color:var(--coral)}
+    .btn-primary:hover{transform:translateY(-3px);filter:brightness(1.03)}
+    .btn-outline:hover{background:var(--coral);color:#fff;transform:translateY(-3px)}
+
+    .social-row{margin-top:18px;display:flex;gap:12px}
+    .social-row a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:8px;background:rgba(0,0,0,0.03);color:var(--muted);text-decoration:none}
+    .social-row a:hover{background:var(--coral);color:#fff;transform:translateY(-4px)}
+
+    /* right image column */
+    .hero-right{position:relative;display:flex;align-items:center;justify-content:center}
+    .shape-circle{
+      position:absolute;
+      width:320px;height:320px;border-radius:50%;
+      right: -40px;
+      background: radial-gradient(circle at 35% 35%, rgba(255,107,107,0.95), rgba(255,83,83,0.95));
+      z-index:1;
+      filter: blur(0px);
+    }
+    .portrait-frame{
+      width:380px;height:380px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+      z-index:2;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,0.18);border:12px solid var(--white);
+    }
+    .portrait-frame img{
+      width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%) contrast(95%);
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section.content{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:36px;
+    }
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+
+    .section-title{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      color:var(--coral);
+      margin-bottom:12px;
+    }
+    .muted{color:var(--muted)}
+
+    /* SKILLS GRID */
+    .skills-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap:18px;
+    }
+    .skill-card{
+      background:var(--card-bg);
+      padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06);
+      display:flex;flex-direction:column;gap:10px;align-items:flex-start;
+    }
+    .skill-card i{font-size:20px;color:var(--coral)}
+
+    /* PROJECT CARDS */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:18px;
+    }
+    .project{
+      background:var(--card-bg);
+      padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .project:hover{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,0.14)}
+
+    /* contact row */
+    .contact-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+    footer{margin-top:36px;padding:30px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* fade-in animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:all .7s cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 360px;padding:24px}
+      .portrait-frame{width:320px;height:320px} .shape-circle{width:260px;height:260px;right:-30px}
+    }
+    @media (max-width:820px){
+      nav ul{display:none}
+      .hero{grid-template-columns:1fr;padding:20px;margin-top:90px}
+      .hero-right{order:2;margin-top:22px}
+      .hero-left{order:1}
+      .portrait-frame{width:260px;height:260px}
+      .shape-circle{display:none}
+    }
+    @media (max-width:480px){
+      .hero-left h2{font-size:28px}
+      .hero-left h2 span{font-size:28px}
+      .cta{flex-direction:column;align-items:flex-start}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR (fixed) ===== -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">CS</div>
+        <h1>Charvi Savani</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<!-- ===== HERO (Home) ===== -->
+  <main id="home" class="hero reveal">
+    <div class="hero-left">
+      <div class="eyebrow">UX • Frontend • DBMS</div>
+      <h2>Hi, I'm <span>Charvi Savani</span></h2>
+      <div class="tagline">Frontend Developer — clean interfaces, usable products</div>
+      <p class="muted">I build modern and responsive web experiences using HTML, CSS and JavaScript. Familiar with DBMS and learning backend development; interested in cloud technologies for the future.</p>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="Charvi_Savani_Resume_Web_Final.pdf" target="_blank" rel="noopener">
+  📄 View Resume
+</a>
+
+        <a class="btn btn-outline" href="#contact">Contact</a>
+      </div>
+
+      <div class="social-row">
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="shape-circle" aria-hidden="true"></div>
+
+      <div class="portrait-frame">
+        <!-- ======= CHANGE THIS IMAGE FILE =======
+             Replace src with your image file (e.g. assets/charvi.jpg)
+             Example:
+             <img src="assets/charvi.jpg" alt="Charvi Savani">
+        -->
+        <img src="assets/placeholder-grayscale.jpg" alt="Charvi — placeholder">
+        <!-- ====================================== -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="content reveal">
+    <div class="section-title">About</div>
+    <div class="two-col
+  " style="margin-top:12px">
+      <div>
+        <p class="muted">I'm a Computer Science Engineering student with strong interests in frontend development, database systems, and intuitive UI. I enjoy building interfaces that are both beautiful and functional. Currently learning backend development (PHP / Node.js) and preparing to explore cloud platforms soon.</p>
+      </div>
+      <div>
+        <ul class="muted" style="list-style:none">
+                    <li><strong>Email:</strong> <a href="mailto:24amtics388@gmail.com">24amtics388@gmail.com</a></li>
+          <li><strong>Location: Mumbai </strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS (HIGHLIGHTED) ===== -->
+  <!-- ⭐ SKILLS SECTION START -->
+  <section id="skills" class="content reveal">
+    <div class="section-title">Skills & Tools</div>
+    <div class="skills-grid" style="margin-top:14px">
+      <div class="skill-card">
+        <i class="fa-brands fa-html5"></i>
+        <strong>HTML</strong>
+        <div class="muted">Semantic markup & accessibility</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-brands fa-css3-alt"></i>
+        <strong>CSS</strong>
+        <div class="muted">Responsive layouts & animations</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-brands fa-js"></i>
+        <strong>JavaScript</strong>
+        <div class="muted">DOM, ES6+, small app logic</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-brands fa-php"></i>
+        <strong>PHP</strong>
+        <div class="muted">Basic backend scripting</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-database"></i>
+        <strong>MySQL / DBMS</strong>
+        <div class="muted">Design & queries</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-terminal"></i>
+        <strong>Linux / Terminal</strong>
+        <div class="muted">Command-line basics</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-code-branch"></i>
+        <strong>Git & GitHub</strong>
+        <div class="muted">Version control & collaboration</div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-users"></i>
+        <strong>Leadership</strong>
+        <div class="muted">Team coordination & tracking</div>
+      </div>
+
+      <!-- 🔆 Add more skill-card blocks here later if needed -->
+    </div>
+  </section>
+  <!-- ⭐ SKILLS SECTION END -->
+
+  <!-- ===== PROJECTS (HIGHLIGHTED) ===== -->
+<!-- 🚀 PROJECTS SECTION START -->
+<section id="projects" class="content reveal">
+  <div class="section-title">Projects</div>
+  <div class="projects-grid" style="margin-top:14px">
+
+    <article class="project">
+      <h3>💇‍♀️ Salon Management System</h3>
+      <p class="muted">
+        A responsive salon website for managing bookings, services, and staff.
+        Built using HTML, CSS, JavaScript, PHP, and MySQL (backend run via XAMPP).
+      </p>
+      <p style="margin-top:10px">
+        <a href="https://charvi1525.github.io/salon-management-system/" target="_blank">🌐 Live Demo</a> |
+        <a href="https://github.com/charvi1525/salon-management-system" target="_blank">💻 GitHub Repo</a>
+      </p>
+    </article>
+
+    <article class="project">
+      <h3>💼 Personal Portfolio</h3>
+      <p class="muted">
+        A single-page portfolio showcasing my skills, projects, and contact details.
+        Designed with HTML, CSS, and JavaScript — deployed on GitHub Pages.
+      </p>
+      <p style="margin-top:10px">
+        <a href="https://charvi1525.github.io/portfolio/" target="_blank">🌐 Live Demo</a> |
+        <a href="https://github.com/charvi1525/portfolio" target="_blank">💻 GitHub Repo</a>
+      </p>
+    </article>
+
+    <!-- 🔆 Add more <article class="project"> cards here later to expand your portfolio -->
+  </div>
+</section>
+<!-- 🚀 PROJECTS SECTION END -->
+
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="content reveal">
+    <div class="section-title">Contact</div>
+    <div style="margin-top:12px" class="contact-row">
+      <a href="mailto:24amtics388@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="#" class="btn btn-outline">LinkedIn</a>
+      <a href="#" class="btn btn-outline">GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Charvi Savani 💻✨ | Crafted with ❤️</p>
+
+  </footer>
+
+  <script>
+    /* Smooth scroll for navbar anchors */
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    /* IntersectionObserver to reveal sections with animation */
+    document.addEventListener('DOMContentLoaded', function(){
+      const obsOptions = { threshold: 0.15, rootMargin: "0px 0px -80px 0px" };
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            // add visible class to children too
+            entry.target.querySelectorAll('.reveal').forEach(n=>n.classList.add('visible'));
+            obs.unobserve(entry.target);
+          }
+        });
+      }, obsOptions);
+
+      // target all reveal & content sections
+      document.querySelectorAll('.reveal, .content').forEach(el=>{
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
