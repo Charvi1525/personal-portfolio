@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charvi Savani | Portfolio</title>
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@300;400;500;600;700;800&display=swap)" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f5ecdf;
+      --green: #314b35;
+      --green-dark: #1f2d22;
+      --mustard: #f2ab1d;
+      --orange: #ef7a43;
+      --black: #161616;
+      --white: #ffffff;
+      --muted: #6d675d;
+      --card: #efe4d4;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--mustard);
+      color: var(--black);
+      box-shadow: var(--shadow);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 10px 16px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      background: var(--mustard);
+      color: var(--black);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--green);
+      color: var(--green);
+    }
+
+    .btn-outline:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .floating-star {
+      position: absolute;
+      color: var(--mustard);
+      font-size: 1.4rem;
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 236, 223, 0.85);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+    }
+
+    .brand span:first-child {
+      color: var(--orange);
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--green-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: var(--mustard);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: var(--green);
+      color: var(--cream);
+      padding: 40px 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      min-height: 85vh;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      color: #d8c8b5;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.95;
+      color: #ead9c6;
+      margin-bottom: 18px;
+    }
+
+    .hero-outline {
+      position: absolute;
+      right: -40px;
+      top: 50px;
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.9;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(242, 171, 29, 0.8);
+      opacity: 0.9;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      color: #efe1d3;
+      font-size: 1.02rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card {
+      width: min(420px, 100%);
+      background: #b96d3d;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+      opacity: 0.92;
+    }
+
+    .hero-note {
+      position: absolute;
+      left: -12px;
+      bottom: 24px;
+      background: rgba(0, 0, 0, 0.65);
+      color: var(--cream);
+      font-size: 0.8rem;
+      max-width: 240px;
+      padding: 14px 14px;
+      line-height: 1.4;
+    }
+
+    .scroll-badge {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--mustard);
+      color: var(--black);
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: var(--shadow);
+      z-index: 4;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-copy h2 {
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(2rem, 4.5vw, 4.4rem);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      color: #2b241e;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 22px;
+    }
+
+    .about-image-card {
+      position: relative;
+      background: var(--green);
+      padding: 20px;
+      min-height: 500px;
+      overflow: visible;
+    }
+
+    .about-image-card img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .info-chip {
+      position: absolute;
+      background: var(--mustard);
+      color: var(--black);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .chip-1 {
+      left: -24px;
+      top: 40px;
+    }
+
+    .chip-2 {
+      right: -24px;
+      top: 170px;
+    }
+
+    .contact-card {
+      position: absolute;
+      left: -20px;
+      bottom: 20px;
+      background: #111;
+      color: var(--white);
+      padding: 20px;
+      min-width: 240px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h4 {
+      font-family: "Abril Fatface", serif;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      color: #e7dfd6;
+      font-size: 0.92rem;
+      display: block;
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+
+    .highlight-section {
+      background: var(--green);
+      color: var(--cream);
+    }
+
+    .edu-exp-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: transparent;
+    }
+
+    .panel h3 {
+      font-family: "Abril Fatface", serif;
+      font-size: 2.1rem;
+      margin-bottom: 20px;
+      color: var(--mustard);
+    }
+
+    .timeline-item {
+      margin-bottom: 18px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--cream);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      display: block;
+      color: #dbcdbd;
+      font-size: 0.95rem;
+    }
+
+    .experience-box {
+      background: var(--mustard);
+      color: var(--black);
+      padding: 28px;
+      border-radius: 0;
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+    }
+
+    .experience-box h3 {
+      color: #2f2312;
+      margin-bottom: 18px;
+    }
+
+    .experience-box .timeline-item strong,
+    .experience-box .timeline-item span {
+      color: #2f2312;
+    }
+
+    .big-side-text {
+      position: absolute;
+      right: 10px;
+      top: 40px;
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 0.9;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(242, 171, 29, 0.26);
+      pointer-events: none;
+      user-select: none;
+      text-align: right;
+    }
+
+    .skills-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .skills-box,
+    .plain-card {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .skills-box h4,
+    .plain-card h4 {
+      font-family: "Abril Fatface", serif;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--cream);
+    }
+
+    .skill-group {
+      margin-bottom: 18px;
+    }
+
+    .skill-group h5 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--mustard);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-top {
+      height: 170px;
+      padding: 22px;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      font-family: "Abril Fatface", serif;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .bg-1 { background: linear-gradient(135deg, #314b35, #5f7d62); }
+    .bg-2 { background: linear-gradient(135deg, #b8683e, #ef9c58); }
+    .bg-3 { background: linear-gradient(135deg, #202020, #4a4a4a); }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #262018;
+    }
+
+    .project-content p {
+      color: #655d55;
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .mini-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .mini-light {
+      background: var(--mustard);
+      color: var(--black);
+    }
+
+    .contact-section {
+      background: #111;
+      color: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+    }
+
+    .contact-item span {
+      display: block;
+      color: #c8bdaf;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a,
+    .contact-item p {
+      color: var(--white);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .goal-box {
+      background: var(--mustard);
+      color: var(--black);
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .goal-box h3 {
+      font-family: "Abril Fatface", serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      background: var(--green-dark);
+      color: #d8ccbf;
+      padding: 26px 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .edu-exp-grid,
+      .skills-contact-grid,
+      .contact-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-outline,
+      .big-side-text {
+        position: static;
+        margin-top: 18px;
+        text-align: left;
+      }
+
+      .about-image-card {
+        min-height: auto;
+      }
+
+      .contact-card,
+      .chip-1,
+      .chip-2 {
+        position: static;
+        margin-top: 16px;
+      }
+
+      .scroll-badge {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero-title {
+        font-size: 3.2rem;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero-card img,
+      .about-image-card img {
+        height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-wrap">
+      <a href="#home" class="brand">
+        <span>✦</span>
+        <span>Charvi Savani</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="Resume.pdf" target="_blank" class="btn btn-secondary">Get Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <p class="hero-kicker">Frontend Developer | UI Enthusiast | Cloud Learner</p>
+        <h1 class="hero-title">PORTFOLIO</h1>
+        <div class="hero-outline">CHARVI<br />SAVANI</div>
+        <p class="hero-text">
+          Hi, I'm <strong>Charvi Savani</strong> - a Mumbai-based frontend developer currently pursuing
+          <strong>B.Tech CSE (Cloud)</strong> at <strong>Uka Tarsadia University</strong>.
+          I love building clean, aesthetic, and user-friendly digital experiences with a strong focus on
+          responsive design and modern interface styling.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="resume.pdf" target="_blank" class="btn btn-outline">Open Resume</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">Mumbai Based</span>
+          <span class="pill">4th Sem CGPA: 8.90</span>
+          <span class="pill">Cloud Interest</span>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="hero-card">
+          <img src="bg200.jpeg" alt="Charvi Savani" />
+          <div class="hero-note">
+            Building minimal, aesthetic and user-centric web experiences with frontend creativity and growing cloud interest.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-badge">Scroll down</div>
+    <div class="floating-star" style="left: 8%; top: 26%;">✦</div>
+    <div class="floating-star" style="left: 10%; top: 32%;">✦</div>
+    <div class="floating-star" style="right: 12%; top: 20%;">✦</div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <h2>Hello,<br>I am !</h2>
+        <p>
+          I am a passionate <strong>Frontend Developer</strong> with a strong interest in building
+          clean, aesthetic, and user-friendly web applications. I enjoy creating minimal and visually
+          appealing interfaces while ensuring a smooth and responsive user experience.
+        </p>
+        <p>
+          I am continuously learning and improving my skills to build modern websites and explore the
+          connection between <strong>frontend development</strong> and <strong>cloud technologies</strong>.
+          My current academic background in Cloud-focused Computer Science is helping me understand
+          how scalable web solutions work beyond just the interface.
+        </p>
+        <a href="#contact" class="btn btn-primary">Let's Connect</a>
+      </div>
+
+      <div class="about-image-card">
+        <img src="bg100.jpeg" alt="Charvi portrait" />
+        <div class="info-chip chip-1">4th Sem CGPA: 8.90</div>
+        <div class="info-chip chip-2">Mumbai + Cloud Interest</div>
+
+        <div class="contact-card">
+          <h4>Contact</h4>
+          <a href="mailto:savanicharvi33@gmail.com">savanicharvi33@gmail.com</a>
+          <a href="tel:8149274170">8149274170</a>
+          <a href="[github.com](https://github.com/Charvi1525)" target="_blank">github.com/Charvi1525</a>
+          <a href="[internshala.com](https://internshala.com/Charvi) Savani" target="_blank">Internshala Profile</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section highlight-section" id="education">
+    <div class="container" style="position: relative;">
+      <div class="big-side-text">RESUME<br>SKILLS</div>
+
+      <div class="edu-exp-grid">
+        <div class="panel">
+          <h3>Education</h3>
+
+          <div class="timeline-item">
+            <strong>B.Tech CSE (Cloud)</strong>
+            <span>Uka Tarsadia University</span>
+            <span>Currently studying | 5th Semester</span>
+          </div>
+
+          <div class="timeline-item">
+            <strong>Current Academic Performance</strong>
+            <span> 4th SEM CGPA: 8.90</span>
+          </div>
+
+          <div class="timeline-item">
+            <strong>Location</strong>
+            <span>Mumbai-based student and aspiring frontend developer</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="experience-box">
+            <h3>Career Focus</h3>
+
+            <div class="timeline-item">
+              <strong>Frontend Development</strong>
+              <span>Creating aesthetic, clean and responsive websites using HTML, CSS and JavaScript.</span>
+            </div>
+
+            <div class="timeline-item">
+              <strong>Cloud Interest</strong>
+              <span>Interested in learning how cloud platforms support scalable applications, hosting, deployment and modern web systems.</span>
+            </div>
+
+            <div class="timeline-item">
+              <strong>Learning Mindset</strong>
+              <span>Focused on continuously improving design sense, coding quality and real-world project building.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-contact-grid" id="skills">
+        <div class="skills-box">
+          <h4>Technical Skills</h4>
+
+          <div class="skill-group">
+            <h5>Core</h5>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive Design</span>
+              <span class="tag">UI/UX Basics</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h5>Frontend Focus</h5>
+            <div class="tags">
+              <span class="tag">Clean UI</span>
+              <span class="tag">Interactive Layouts</span>
+              <span class="tag">Aesthetic Design</span>
+              <span class="tag">Mobile-Friendly Pages</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h5>Cloud Interest</h5>
+            <div class="tags">
+              <span class="tag">Cloud Basics</span>
+              <span class="tag">Deployment Interest</span>
+              <span class="tag">Web Hosting</span>
+              <span class="tag">Scalable Web Apps</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="plain-card">
+          <h4>Soft + Hard Skills</h4>
+
+          <div class="skill-group">
+            <h5>Soft Skills</h5>
+            <div class="tags">
+              <span class="tag">Communication</span>
+              <span class="tag">Creativity</span>
+              <span class="tag">Adaptability</span>
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Teamwork</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h5>Hard Skills</h5>
+            <div class="tags">
+              <span class="tag">Web Layout Design</span>
+              <span class="tag">Basic DOM Handling</span>
+              <span class="tag">Local Storage</span>
+              <span class="tag">Project Structuring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        A few projects that reflect my interest in building practical, aesthetic and user-friendly web experiences.
+      </p>
+
+     <!-- ONLY PROJECT LINKS UPDATED -->
+
+<div class="projects-grid">
+  <article class="project-card">
+    <div class="project-top bg-1">Salon</div>
+    <div class="project-content">
+      <h3>Salon Management System</h3>
+      <p>
+        A web-based application to manage salon appointments and services efficiently with a clean
+        and user-friendly interface.
+      </p>
+      <div class="project-links">
+        <a href="https://charvi1525.github.io/salon-management-system/" target="_blank" class="mini-btn mini-light">Live Demo</a>
+        <a href="https://github.com/Charvi1525" target="_blank" class="mini-btn mini-dark">GitHub</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <div class="project-top bg-2">Tasks</div>
+    <div class="project-content">
+      <h3>To-Do App</h3>
+      <p>
+        A simple and interactive task management application with add, delete and save functionality
+        using local storage.
+      </p>
+      <div class="project-links">
+        <a href="https://charvi1525.github.io/TodoWidget/" target="_blank" class="mini-btn mini-light">Live Demo</a>
+        <a href="https://github.com/Charvi1525" target="_blank" class="mini-btn mini-dark">GitHub</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <div class="project-top bg-3">Focus</div>
+    <div class="project-content">
+      <h3>Aesthetic Focus Timer (FocusFlow)</h3>
+      <p>
+        A minimal and aesthetic timer with a customizable background, draggable task widget and
+        smooth countdown UI designed for distraction-free productivity.
+      </p>
+      <div class="project-links">
+        <a href="https://charvi1525.github.io/focusflow/" target="_blank" class="mini-btn mini-light">Live Demo</a>
+        <a href="https://github.com/Charvi1525" target="_blank" class="mini-btn mini-dark">GitHub</a>
+      </div>
+    </div>
+  </article>
+</div>  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle" style="color:#d8ccbf;">
+          Reach out for collaboration, internships, frontend opportunities, or creative web projects.
+        </p>
+
+        <div class="contact-links">
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:savanicharvi33@gmail.com">savanicharvi33@gmail.com</a>
+          </div>
+
+          <div class="contact-item">
+            <span>Mobile</span>
+            <a href="tel:8149274170">8149274170</a>
+          </div>
+
+          <div class="contact-item">
+            <span>GitHub</span>
+            <a href="[github.com](https://github.com/Charvi1525)" target="_blank">[github.com](https://github.com/Charvi1525)</a>
+          </div>
+
+          <div class="contact-item">
+            <span>Internshala</span>
+            <a href="[internshala.com](https://internshala.com/Charvi) Savani" target="_blank">[internshala.com](https://internshala.com/Charvi) Savani</a>
+          </div>
+
+          <div class="contact-item">
+            <span>Resume</span>
+            <a href="resume.pdf" target="_blank">Open Resume PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="goal-box">
+        <h3>Goal</h3>
+        <p>
+          To become a skilled <strong>frontend developer</strong> and build modern, aesthetic and user-centric
+          web applications that combine clean design with practical functionality.
+        </p>
+        <br />
+        <p>
+          I am also interested in exploring <strong>cloud technologies</strong> to understand deployment,
+          scalability and the backend support systems that make modern applications reliable and efficient.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Designed and developed by Charvi Savani.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
